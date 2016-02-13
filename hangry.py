@@ -34,26 +34,6 @@ def request(host, path, url_params=None):
         resource_owner_key=TOKEN,
         resource_owner_secret=TOKEN_SECRET)
 
-    #consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
-
-
-
-    # oauth_request = oauth.Request(
-    #     method="GET", url=url, parameters=url_params)
-
-    # oauth_request.update(
-    #     {
-    #         'oauth_nonce': oauth.generate_nonce(),
-    #         'oauth_timestamp': oauth.generate_timestamp(),
-    #         'oauth_token': TOKEN,
-    #         'oauth_consumer_key': CONSUMER_KEY
-    #     }
-    # )
-    # token = oauth.Token(TOKEN, TOKEN_SECRET)
-    # oauth_request.sign_request(
-    #     oauth.SignatureMethod_HMAC_SHA1(), consumer, token)
-    # signed_url = oauth_request.to_url()
-
     print u'Querying Yelp API...'
 
     response = yelp.get(url, params=url_params)
