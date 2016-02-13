@@ -10,3 +10,13 @@ CONSUMER_SECRET: your_consumer_secret
 TOKEN: your_token
 TOKEN_SECRET: your_token_secret
 ```
+
+```
+usage: hangry.py [-h] [-q TERM] [-l LOCATION]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q TERM, --term TERM  Search term (default: dinner)
+  -l LOCATION, --location LOCATION
+                        Search location (default: Fairfax, VA)
+```
