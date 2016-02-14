@@ -1,7 +1,6 @@
 import argparse
 import configparser
 import requests
-from config import ConfigSectionMap
 import oauth2 as oauth
 import pprint
 from requests_oauthlib import OAuth1Session
