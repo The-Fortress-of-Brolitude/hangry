@@ -52,7 +52,9 @@ def search(term, location):
 def query_api(term, location):
     response = search(term, location)
 
-    pprint.pprint(response, indent=2)
+    # for console printing
+    query = pprint.pprint(response, indent=2)
+    return response
 
 @app.route('/')
 def main():
@@ -66,7 +68,8 @@ def main():
 
     input_values = parser.parse_args()
 
-    query_api(input_values.term, input_values.location)
+    # print api query to screen as str
+    return str(query_api(input_values.term, input_values.location))
 
 if __name__ == '__main__':
     app.run()
