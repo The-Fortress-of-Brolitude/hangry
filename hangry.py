@@ -5,6 +5,7 @@ import oauth2 as oauth
 import pprint
 from requests_oauthlib import OAuth1Session
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -53,10 +54,10 @@ def query_api(term, location):
     response = search(term, location)
 
     # for console printing
-    query = pprint.pprint(response, indent=2)
+    #query = pprint.pprint(response, indent=2)
     return response
 
-@app.route('/')
+@app.route('/index')
 def main():
     parser = argparse.ArgumentParser()
 
@@ -68,8 +69,9 @@ def main():
 
     input_values = parser.parse_args()
 
+    blah = query_api(input_values.term, input_values.location)
     # print api query to screen as str
-    return str(query_api(input_values.term, input_values.location))
+    return render_template('index.html', query=str(blah))
 
 if __name__ == '__main__':
     app.run()
