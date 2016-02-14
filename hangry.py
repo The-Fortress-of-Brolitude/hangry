@@ -4,6 +4,9 @@ import requests
 import oauth2 as oauth
 import pprint
 from requests_oauthlib import OAuth1Session
+from flask import Flask
+
+app = Flask(__name__)
 
 Config = configparser.ConfigParser()
 Config.read("config.ini")
@@ -51,6 +54,7 @@ def query_api(term, location):
 
     pprint.pprint(response, indent=2)
 
+@app.route('/')
 def main():
     parser = argparse.ArgumentParser()
 
@@ -65,4 +69,4 @@ def main():
     query_api(input_values.term, input_values.location)
 
 if __name__ == '__main__':
-    main()
+    app.run()
