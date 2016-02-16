@@ -1,7 +1,8 @@
 # hangry
-When people get hungry they often get angry. Be happy, not hangry.
+## When people get hungry they often get angry. Be happy, not hangry.
 
-**Input Yelp API tokens in a file named 'config.ini' in the following format**
+* Input Yelp API tokens in a file named 'config.ini' in the following format
+* Hangry runs as a Flask app on port 5000 by default
 
 ```
 [yelp_api]
