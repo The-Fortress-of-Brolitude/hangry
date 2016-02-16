@@ -4,7 +4,7 @@
     </head>
     <body>
         {% for value in query['businesses'] %}
-        <p>VALUE: {{ value }}</p>
+        <p>Biz: <a href={{ value.url}}>{{ value.name }}</a></p>
         {% endfor %}
     </body>
 </html>
