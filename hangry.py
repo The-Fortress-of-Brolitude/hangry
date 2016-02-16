@@ -3,6 +3,7 @@ import configparser
 import requests
 import oauth2 as oauth
 import pprint
+import random
 from requests_oauthlib import OAuth1Session
 from flask import Flask
 from flask import render_template
@@ -15,7 +16,7 @@ Config.read("config.ini")
 API_HOST = 'https://api.yelp.com'
 DEFAULT_TERM = 'dinner'
 DEFAULT_LOCATION = 'Fairfax, VA'
-SEARCH_LIMIT = 3
+SEARCH_LIMIT = 10
 SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business'
 
@@ -53,8 +54,6 @@ def search(term, location):
 def query_api(term, location):
     response = search(term, location)
 
-    # for console printing
-    #query = pprint.pprint(response, indent=2)
     return response
 
 @app.route('/')
@@ -69,9 +68,9 @@ def main():
 
     input_values = parser.parse_args()
 
-    blah = query_api(input_values.term, input_values.location)
-    # print api query to screen as str
-    return render_template('index.html', query=blah)
+    choices = query_api(input_values.term, input_values.location)
+    random_choice = choices['businesses'][random.randint(0,SEARCH_LIMIT-1)].get('url')
+    return render_template('index.html', query=random_choice)
 
 if __name__ == '__main__':
     app.run()
