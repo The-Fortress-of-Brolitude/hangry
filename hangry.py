@@ -57,7 +57,7 @@ def query_api(term, location):
     #query = pprint.pprint(response, indent=2)
     return response
 
-@app.route('/index')
+@app.route('/')
 def main():
     parser = argparse.ArgumentParser()
 
@@ -71,7 +71,7 @@ def main():
 
     blah = query_api(input_values.term, input_values.location)
     # print api query to screen as str
-    return render_template('index.html', query=str(blah))
+    return render_template('index.html', query=blah)
 
 if __name__ == '__main__':
     app.run()

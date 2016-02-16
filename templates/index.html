@@ -3,6 +3,8 @@
         <title>hello</title>
     </head>
     <body>
-        {{ query }}
+        {% for value in query['businesses'] %}
+        <p>VALUE: {{ value }}</p>
+        {% endfor %}
     </body>
 </html>
